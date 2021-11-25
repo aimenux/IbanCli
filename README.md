@@ -1,6 +1,8 @@
+[![.NET](https://github.com/aimenux/IbanCli/actions/workflows/ci.yml/badge.svg)](https://github.com/aimenux/IbanCli/actions/workflows/ci.yml)
+
 # IbanCli
 ```
-Providing net global tool in order to validate and generate ibans
+Providing a global tool in order to validate and generate ibans
 ```
 
 > In this repo, i m building a global tool that allows to validate and generate ibans.
