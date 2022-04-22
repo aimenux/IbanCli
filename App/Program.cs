@@ -1,5 +1,5 @@
-﻿using System.Reflection;
-using App.Commands;
+﻿using App.Commands;
+using App.Extensions;
 using IbanNet;
 using IbanNet.Registry;
 using Lib.Helpers;
@@ -8,7 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
 
 namespace App
 {
@@ -23,12 +22,9 @@ namespace App
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((_, config) =>
                 {
-                    config.AddCommandLine(args);
+                    config.AddJsonFile();
                     config.AddEnvironmentVariables();
-                    config.SetBasePath(GetDirectoryPath());
-                    var environment = Environment.GetEnvironmentVariable("ENVIRONMENT");
-                    config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-                    config.AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true);
+                    config.AddCommandLine(args);
                 })
                 .ConfigureLogging((hostingContext, loggingBuilder) =>
                 {
@@ -46,47 +42,5 @@ namespace App
                     services.AddTransient<IIbanValidator, IbanValidator>();
                     services.AddTransient<IIbanGenerator, IbanGenerator>();
                 });
-
-        private static void AddConsoleLogger(this ILoggingBuilder loggingBuilder)
-        {
-            if (!File.Exists(GetSettingFilePath()))
-            {
-                loggingBuilder.AddSimpleConsole(options =>
-                {
-                    options.SingleLine = true;
-                    options.IncludeScopes = true;
-                    options.UseUtcTimestamp = true;
-                    options.TimestampFormat = "[HH:mm:ss:fff] ";
-                    options.ColorBehavior = LoggerColorBehavior.Enabled;
-                });
-            }
-        }
-
-        private static void AddNonGenericLogger(this ILoggingBuilder loggingBuilder)
-        {
-            var categoryName = typeof(Program).Namespace;
-            var services = loggingBuilder.Services;
-            services.AddSingleton(serviceProvider =>
-            {
-                var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
-                return loggerFactory.CreateLogger(categoryName!);
-            });
-        }
-
-        private static string GetSettingFilePath() => Path.GetFullPath(Path.Combine(GetDirectoryPath(), @"appsettings.json"));
-
-        private static string GetDirectoryPath()
-        {
-            try
-            {
-                return Path.GetDirectoryName(GetAssemblyLocation())!;
-            }
-            catch
-            {
-                return Directory.GetCurrentDirectory();
-            }
-        }
-
-        private static string GetAssemblyLocation() => Assembly.GetExecutingAssembly().Location;
     }
 }
