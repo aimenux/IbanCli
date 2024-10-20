@@ -26,10 +26,11 @@ Providing a global tool in order to validate and generate ibans
 > - `dotnet tool uninstall -g IbanCli`
 >
 > 
-> > To run global tool, type commands :
+> To run global tool, type commands :
 > - `IbanCli -h`
 > - `IbanCli Generate BE`
 > - `IbanCli Validate BE88630745557701`
+> 
 > 
 > ![IbanCli](Screenshots/IbanCli.png)
 >
