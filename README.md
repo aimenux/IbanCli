@@ -13,23 +13,24 @@ Providing a global tool in order to validate and generate ibans
 > - Use sub command `Validate` to validate an iban
 >
 >
-> To run code in debug or release mode, type the following commands in your favorite terminal : 
-> - `.\App.exe Generate BE`
-> - `.\App.exe Validate BE88630745557701`
->
->
-> To install global tool from a local source path, type commands :
-> - `dotnet tool install -g --configfile .\nugets\local.config IbanCli --version "*-*" --ignore-failed-sources`
->
-> To install global tool from [nuget source](https://www.nuget.org/packages/IbanCli), type commands :
+> To install global tool from [nuget source](https://www.nuget.org/packages/IbanCli), type command :
 > - For stable version : `dotnet tool install -g IbanCli --ignore-failed-sources`
 > - For prerelease version : `dotnet tool install -g IbanCli --version "*-*" --ignore-failed-sources`
 >
-> To run global tool, type commands :
+> 
+> To install global tool from a local source path, type command :
+> - `dotnet tool install -g --configfile .\nugets\local.config IbanCli --version "*-*" --ignore-failed-sources`
+>
+> 
+> To uninstall global tool, type command :
+> - `dotnet tool uninstall -g IbanCli`
+>
+> 
+> > To run global tool, type commands :
 > - `IbanCli -h`
 > - `IbanCli Generate BE`
 > - `IbanCli Validate BE88630745557701`
->
+> 
 > ![IbanCli](Screenshots/IbanCli.png)
 >
 
