@@ -18,7 +18,7 @@ Providing a global tool in order to validate and generate ibans
 >
 >
 > To install, run, update, uninstall global tool from a local source path, type commands :
-> - `dotnet tool install -g --configfile .\Nugets\local.config IbanCli`
+> - `dotnet tool install -g --configfile .\nugets\local.config IbanCli --version "*-*" --ignore-failed-sources`
 > - `IbanCli -h`
 > - `IbanCli Generate BE`
 > - `IbanCli Validate BE88630745557701`

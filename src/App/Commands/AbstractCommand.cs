@@ -41,6 +41,7 @@ public abstract class AbstractCommand
         return type
             .Assembly
             .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
-            ?.InformationalVersion!;
+            ?.InformationalVersion
+            .Split("+").First()!;
     }
 }
