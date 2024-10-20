@@ -1,4 +1,5 @@
 [![.NET](https://github.com/aimenux/IbanCli/actions/workflows/ci.yml/badge.svg)](https://github.com/aimenux/IbanCli/actions/workflows/ci.yml)
+[![NuGet](https://img.shields.io/nuget/v/IbanCli)](https://www.nuget.org/packages/IbanCli/)
 
 # IbanCli
 ```
@@ -7,9 +8,9 @@ Providing a global tool in order to validate and generate ibans
 
 > In this repo, i m building a global tool that allows to validate and generate ibans.
 >
-> The tool is based on two sub commmands :
-> - Use sub command `Validate` to validate an iban
+> The tool is based on two sub commands :
 > - Use sub command `Generate` to generate an iban
+> - Use sub command `Validate` to validate an iban
 >
 >
 > To run code in debug or release mode, type the following commands in your favorite terminal : 
@@ -17,18 +18,17 @@ Providing a global tool in order to validate and generate ibans
 > - `.\App.exe Validate BE88630745557701`
 >
 >
-> To install, run, update, uninstall global tool from a local source path, type commands :
+> To install global tool from a local source path, type commands :
 > - `dotnet tool install -g --configfile .\nugets\local.config IbanCli --version "*-*" --ignore-failed-sources`
-> - `IbanCli -h`
-> - `IbanCli Generate BE`
-> - `IbanCli Validate BE88630745557701`
-> - `dotnet tool update -g IbanCli --ignore-failed-sources`
-> - `dotnet tool uninstall -g IbanCli`
 >
-> To install global tool from [nuget source](https://www.nuget.org/packages/IbanCli), type these command :
+> To install global tool from [nuget source](https://www.nuget.org/packages/IbanCli), type commands :
 > - For stable version : `dotnet tool install -g IbanCli --ignore-failed-sources`
 > - For prerelease version : `dotnet tool install -g IbanCli --version "*-*" --ignore-failed-sources`
 >
+> To run global tool, type commands :
+> - `IbanCli -h`
+> - `IbanCli Generate BE`
+> - `IbanCli Validate BE88630745557701`
 >
 > ![IbanCli](Screenshots/IbanCli.png)
 >
