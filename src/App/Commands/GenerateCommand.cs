@@ -23,7 +23,7 @@ public class GenerateCommand : AbstractCommand
 
     protected override void Execute(CommandLineApplication app)
     {
-        ArgumentNullException.ThrowIfNull(CountryCode);
+        ArgumentException.ThrowIfNullOrWhiteSpace(CountryCode);
         var iban = _ibanService.Generate(CountryCode);
         ConsoleService.RenderIban(iban, CountryCode);
     }

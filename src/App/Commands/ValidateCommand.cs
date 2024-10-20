@@ -23,7 +23,7 @@ public class ValidateCommand : AbstractCommand
 
     protected override void Execute(CommandLineApplication app)
     {
-        ArgumentNullException.ThrowIfNull(Iban);
+        ArgumentException.ThrowIfNullOrWhiteSpace(Iban);
         var isValid = _ibanService.Validate(Iban);
         ConsoleService.RenderIban(Iban, isValid);
     }
