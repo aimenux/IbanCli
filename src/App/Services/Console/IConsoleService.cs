@@ -1,6 +1,6 @@
-﻿namespace Lib.Helpers;
+﻿namespace App.Services.Console;
 
-public interface IConsoleHelper
+public interface IConsoleService
 {
     void RenderTitle(string text);
 

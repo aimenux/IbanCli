@@ -1,15 +1,14 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using App.Extensions;
 using Spectre.Console;
 
-namespace Lib.Helpers;
+namespace App.Services.Console;
 
-public class ConsoleHelper : IConsoleHelper
+public class ConsoleService : IConsoleService
 {
     public void RenderTitle(string text)
     {
         AnsiConsole.WriteLine();
-        AnsiConsole.Write(new FigletText(text).LeftAligned());
+        AnsiConsole.Write(new FigletText(text));
         AnsiConsole.WriteLine();
     }
 
@@ -44,7 +43,7 @@ public class ConsoleHelper : IConsoleHelper
     {
         var name = Path.GetFileName(filepath);
         var json = File.ReadAllText(filepath);
-        var formattedJson = JToken.Parse(json).ToString(Formatting.Indented);
+        var formattedJson = json.FormatJson();
         var header = new Rule($"[yellow]({name})[/]");
         header.Centered();
         var footer = new Rule($"[yellow]({filepath})[/]");
@@ -59,10 +58,7 @@ public class ConsoleHelper : IConsoleHelper
 
     public void RenderException(Exception exception)
     {
-        const ExceptionFormats formats = ExceptionFormats.ShortenTypes
-                                         | ExceptionFormats.ShortenPaths
-                                         | ExceptionFormats.ShortenMethods;
-
+        const ExceptionFormats formats = ExceptionFormats.ShortenEverything;
         AnsiConsole.WriteLine();
         AnsiConsole.WriteException(exception, formats);
         AnsiConsole.WriteLine();

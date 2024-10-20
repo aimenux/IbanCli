@@ -33,4 +33,4 @@ Providing a global tool in order to validate and generate ibans
 > ![IbanCli](Screenshots/IbanCli.png)
 >
 
-**`Tools`** : vs22, net 6.0, iban-net, command-line, spectre-console
+**`Tools`** : net 8.0, iban-net, command-line, spectre-console

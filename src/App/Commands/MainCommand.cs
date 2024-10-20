@@ -1,6 +1,6 @@
-﻿using System.Reflection;
-using Lib.Helpers;
+﻿using App.Services.Console;
 using McMaster.Extensions.CommandLineUtils;
+using static App.Extensions.PathExtensions;
 
 namespace App.Commands;
 
@@ -9,43 +9,27 @@ namespace App.Commands;
 [VersionOptionFromMember(MemberName = nameof(GetVersion))]
 public class MainCommand : AbstractCommand
 {
-    public MainCommand(IConsoleHelper consoleHelper) : base(consoleHelper)
+    public MainCommand(IConsoleService consoleService) : base(consoleService)
     {
     }
 
     [Option("-s|--settings", "Show settings information.", CommandOptionType.NoValue)]
-    public bool ShowSettings { get; set; }
+    public bool ShowSettings { get; init; }
 
     protected override void Execute(CommandLineApplication app)
     {
         if (ShowSettings)
         {
             var filepath = GetSettingFilePath();
-            ConsoleHelper.RenderSettingsFile(filepath);
+            ConsoleService.RenderSettingsFile(filepath);
         }
         else
         {
             const string title = "IbanCli";
-            ConsoleHelper.RenderTitle(title);
+            ConsoleService.RenderTitle(title);
             app.ShowHelp();
         }
     }
 
     protected static string GetVersion() => GetVersion(typeof(MainCommand));
-
-    private static string GetSettingFilePath() => Path.GetFullPath(Path.Combine(GetDirectoryPath(), @"appsettings.json"));
-
-    private static string GetDirectoryPath()
-    {
-        try
-        {
-            return Path.GetDirectoryName(GetAssemblyLocation())!;
-        }
-        catch
-        {
-            return Directory.GetCurrentDirectory();
-        }
-    }
-
-    private static string GetAssemblyLocation() => Assembly.GetExecutingAssembly().Location;
 }

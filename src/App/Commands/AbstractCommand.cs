@@ -1,16 +1,16 @@
 ﻿using System.Reflection;
-using Lib.Helpers;
+using App.Services.Console;
 using McMaster.Extensions.CommandLineUtils;
 
 namespace App.Commands;
 
 public abstract class AbstractCommand
 {
-    protected IConsoleHelper ConsoleHelper;
+    protected readonly IConsoleService ConsoleService;
 
-    protected AbstractCommand(IConsoleHelper consoleHelper)
+    protected AbstractCommand(IConsoleService consoleService)
     {
-        ConsoleHelper = consoleHelper;
+        ConsoleService = consoleService;
     }
 
     public void OnExecute(CommandLineApplication app)
@@ -26,7 +26,7 @@ public abstract class AbstractCommand
         }
         catch (Exception ex)
         {
-            ConsoleHelper.RenderException(ex);
+            ConsoleService.RenderException(ex);
         }
     }
 

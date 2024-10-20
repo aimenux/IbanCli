@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Lib.Helpers;
-using Lib.Services;
+using App.Services.Console;
+using App.Services.Iban;
 using McMaster.Extensions.CommandLineUtils;
 
 namespace App.Commands;
@@ -12,20 +12,20 @@ public class GenerateCommand : AbstractCommand
 {
     private readonly IIbanService _ibanService;
 
-    public GenerateCommand(IIbanService ibanService, IConsoleHelper consoleHelper) : base(consoleHelper)
+    public GenerateCommand(IIbanService ibanService, IConsoleService consoleService) : base(consoleService)
     {
         _ibanService = ibanService;
     }
 
     [Required]
     [Argument(0, "CountryCode", "Iban CountryCode")]
-    public string? CountryCode { get; set; }
+    public string? CountryCode { get; init; }
 
     protected override void Execute(CommandLineApplication app)
     {
         ArgumentNullException.ThrowIfNull(CountryCode);
         var iban = _ibanService.Generate(CountryCode);
-        ConsoleHelper.RenderIban(iban, CountryCode);
+        ConsoleService.RenderIban(iban, CountryCode);
     }
 
     protected override bool HasValidArguments()

@@ -1,7 +1,8 @@
-﻿using IbanNet;
+﻿using App.Extensions;
+using IbanNet;
 using IbanNet.Registry;
 
-namespace Lib.Services;
+namespace App.Services.Iban;
 
 public class IbanService : IIbanService
 {
@@ -14,10 +15,7 @@ public class IbanService : IIbanService
         _generator = generator;
     }
 
-    public bool Validate(string iban)
-    {
-        return _validator.Validate(iban).IsValid;
-    }
+    public bool Validate(string iban) => _validator.Validate(iban.RemoveWhitespaces()).IsValid;
 
     public string Generate(string countryCode)
     {

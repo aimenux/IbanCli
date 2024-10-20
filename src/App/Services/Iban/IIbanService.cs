@@ -1,4 +1,4 @@
-﻿namespace Lib.Services;
+﻿namespace App.Services.Iban;
 
 public interface IIbanService
 {

@@ -3,16 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App", "App\App.csproj", "{B4C2D254-277F-4F13-B153-AF08C57AAFAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App", "src\App\App.csproj", "{B4C2D254-277F-4F13-B153-AF08C57AAFAF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lib", "Lib\Lib.csproj", "{4FEBB5C3-E367-4831-93F4-E3EFD5E257FE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{C497C97F-2422-4903-B871-DBF9A571A790}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "test\Tests\Tests.csproj", "{C497C97F-2422-4903-B871-DBF9A571A790}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6A029CB5-C619-4DFB-AADC-45CCECF1D31D}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\ci.yml = .github\workflows\ci.yml
 		README.md = README.md
+		global.json = global.json
+		.gitignore = .gitignore
 	EndProjectSection
 EndProject
 Global
@@ -25,10 +25,6 @@ Global
 		{B4C2D254-277F-4F13-B153-AF08C57AAFAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4C2D254-277F-4F13-B153-AF08C57AAFAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4C2D254-277F-4F13-B153-AF08C57AAFAF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4FEBB5C3-E367-4831-93F4-E3EFD5E257FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FEBB5C3-E367-4831-93F4-E3EFD5E257FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4FEBB5C3-E367-4831-93F4-E3EFD5E257FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4FEBB5C3-E367-4831-93F4-E3EFD5E257FE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C497C97F-2422-4903-B871-DBF9A571A790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C497C97F-2422-4903-B871-DBF9A571A790}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C497C97F-2422-4903-B871-DBF9A571A790}.Release|Any CPU.ActiveCfg = Release|Any CPU
